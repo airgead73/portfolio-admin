@@ -1,2 +1,2 @@
-# starter-deployment
-Starter for testing hosting services.
+# Portfolio Admin
+Admin site for portfolio art project.
