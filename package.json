@@ -1,0 +1,27 @@
+{
+  "name": "starter-deployment",
+  "version": "1.0.0",
+  "description": "Starter for testing hosting services.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airgead73/starter-deployment.git"
+  },
+  "author": "dan m.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/airgead73/starter-deployment/issues"
+  },
+  "homepage": "https://github.com/airgead73/starter-deployment#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
