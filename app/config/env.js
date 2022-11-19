@@ -11,7 +11,7 @@ const clientID = process.env.CLIENT_ID;
 const issuerURL = process.env.ISSUER_BASE_URL;
 
 /* DB */
-const mongoURI = process.env.MONGO_URI + 'db_render';
+const mongoURI = process.env.MONGO_URI + 'db_v1';
 
 /* Check Variables */
 if(!testMessage) {
