@@ -1,7 +1,7 @@
 {
-  "name": "starter-deployment",
+  "name": "portfolio-admin",
   "version": "1.0.0",
-  "description": "Starter for testing hosting services.",
+  "description": "Admin site for art portfolio project.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
