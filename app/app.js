@@ -37,7 +37,7 @@ app.use(function(err, req, res, next) {
     status = err.status;
   }
 
-  res.send(`STATUS: ${status}, ERROR: ${err.message}`);
+  res.send(`ERROR: ${err.message}`);
 
 });
 /**
