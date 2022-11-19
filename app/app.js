@@ -19,7 +19,7 @@ app.use(cookieParser());
  * routes
  */
 app.get('/', (req, res, next) => {
-  res.send('Practice for deploying apps.');
+  res.send('Admin site for portfolio.');
 });
 /**
  * error handling
