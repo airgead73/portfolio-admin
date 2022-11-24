@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 /**
  * internal imports
  */
-const { testMessage, isDev } = require('./config/env');
+const { isDev } = require('./config/env');
 const { authConfig } = require('./config');
 const { checkAuthClient } = require('./middleware');
 /**
