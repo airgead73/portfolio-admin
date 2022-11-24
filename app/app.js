@@ -35,20 +35,8 @@ app.use(function(req, res, next) {
 /**
  * routes
  */
-app.get('/', (req, res, next) => {
-  const { isAuthenticated } = res.locals;
-
-  if(isAuthenticated) {
-    return res.status(200).render('template', {
-      success: true,
-      pagePath: './pages/LoggedIn'
-    });
-  } else {
-    return res.status(401).render('template', {
-      success: false,
-      pagePath: './pages/NotLoggedIn'
-    });
-  }
+app.get('/', checkAuthClient, (req, res, next) => {
+  res.status(200).send('CLIENT home page');
 });
 /**
  * error handling
