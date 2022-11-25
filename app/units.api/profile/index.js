@@ -1,4 +1,4 @@
-const profileRouter = require('./profile.routes');
+const profileRouter = require('./profile.routes');c
 
 module.exports = {
   profileRouter
