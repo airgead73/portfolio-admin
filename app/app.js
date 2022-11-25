@@ -35,8 +35,15 @@ app.use(function(req, res, next) {
 /**
  * routes
  */
-app.get('/', checkAuthClient, checkMethod('GET'), (req, res, next) => {
-  res.status(200).send('CLIENT home page');
+app.get('/', (req, res, next) => {
+  
+  return res.status(200)
+    .render('template', {
+      success: true,
+      pagePath: './pages/home',
+      title: 'Portfolio Admin'
+    });
+  
 });
 /**
  * error handling
