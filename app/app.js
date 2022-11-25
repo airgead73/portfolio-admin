@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser');
 const { isDev } = require('./config/env');
 const { authConfig } = require('./config');
 const { checkAuthClient, checkMethod } = require('./middleware');
+const apiRouter = require('./units.api/router');
 /**
  * app activation
  */
@@ -35,16 +36,7 @@ app.use(function(req, res, next) {
 /**
  * routes
  */
-app.get('/', (req, res, next) => {
-  
-  return res.status(200)
-    .render('template', {
-      success: true,
-      pagePath: './pages/home',
-      title: 'Portfolio Admin'
-    });
-  
-});
+app.use('/api', apiRouter);
 /**
  * error handling
  */
