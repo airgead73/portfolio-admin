@@ -1,13 +1,19 @@
 /**
- * @desc photo create view
- * @route GET - /photos/add
+ * @desc work create view
+ * @route GET - /works/add
  * @access Private
  * */
  exports.create = async(req,res,next) => {
 
   try {
 
-    res.status(200).send('CLIENT photo create view.');
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/works/add',
+        title: 'add work',
+        heading: 'add work'
+      });
 
   } catch(err) {
 
@@ -17,15 +23,21 @@
 
  } 
 /**
- * @desc photo read view
- * @route GET - /photos
+ * @desc work read view
+ * @route GET - /works
  * @access Private
  * */
  exports.read = async(req,res,next) => {
 
   try {
 
-    res.status(200).send('CLIENT photo read view.');
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/works/index',
+        title: 'works',
+        heading: 'works'
+      });
 
   } catch(err) {
 
@@ -35,8 +47,8 @@
 
  } 
 /**
- * @desc photo detail view
- * @route GET - /photos/:id
+ * @desc work detail view
+ * @route GET - /works/:id
  * @access Private
  * */
  exports.detail = async(req,res,next) => {
@@ -44,8 +56,15 @@
   try {
 
     const { id } = req.params;
-    res.status(200).send(`CLIENT photo detail view: ${id}.`);
 
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/works/detail',
+        title: `work ${id}`,
+        heading: 'work detail'
+      });
+      
   } catch(err) {
 
     next(err);
@@ -54,8 +73,8 @@
 
  } 
 /**
- * @desc photo update view
- * @route GET - /photos/:id/update
+ * @desc work update view
+ * @route GET - /works/:id/update
  * @access Private
  * */
  exports.update = async(req,res,next) => {
@@ -63,7 +82,15 @@
   try {
 
     const { id } = req.params;
-    res.status(200).send(`CLIENT photo update view: ${id}.`);
+
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/works/update',
+        title: `update ${id}`,
+        heading: 'work update'
+      });
+    
 
   } catch(err) {
 
@@ -73,8 +100,8 @@
 
  } 
 /**
- * @desc photo delete view
- * @route GET - /photos/:id/delete
+ * @desc work delete view
+ * @route GET - /works/:id/delete
  * @access Private
  * */
  exports.remove = async(req,res,next) => {
@@ -82,7 +109,15 @@
   try {
 
     const { id } = req.params;
-    res.status(200).send(`CLIENT photo delete view: ${id}.`);
+
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/works/remove',
+        title: `delete ${id}`,
+        heading: 'work delete'
+      });
+    
 
   } catch(err) {
 
@@ -92,15 +127,23 @@
 
  } 
 /**
- * @desc photo drop view
- * @route GET - /photos/drop
+ * @desc work drop view
+ * @route GET - /works/drop
  * @access Private
  * */
  exports.drop = async(req,res,next) => {
 
   try {
 
-    res.status(200).send('CLIENT drop photo collection.');
+
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/works/drop',
+        title: 'drop works',
+        heading: 'work drop'
+      });
+    
 
   } catch(err) {
 

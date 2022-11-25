@@ -7,7 +7,13 @@
 
   try {
 
-    res.status(200).send('CLIENT profile create view.');
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/profile/add',
+        title: 'profile',
+        heading: 'profile'
+      });
 
   } catch(err) {
 
@@ -25,7 +31,13 @@
 
   try {
 
-    res.status(200).send('CLIENT profile read view.');
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/profile/index',
+        title: 'profile',
+        heading: 'profile'
+      });
 
   } catch(err) {
 
@@ -43,7 +55,13 @@
 
   try {
 
-    res.status(200).send('CLIENT update profile view.');
+    return res.status(200)
+    .render('template', {
+      success: true,
+      pagePath: './pages/profile/udpate',
+      title: 'update profile',
+      heading: 'update profile'
+    });
 
   } catch(err) {
 
@@ -61,7 +79,13 @@
 
   try {
 
-    res.status(200).send('CLIENT delete profile view.');
+    return res.status(200)
+    .render('template', {
+      success: true,
+      pagePath: './pages/profile/remove',
+      title: 'remove profile',
+      heading: 'remove profile'
+    });
 
   } catch(err) {
 

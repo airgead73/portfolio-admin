@@ -7,7 +7,13 @@
 
   try {
 
-    res.status(200).send('CLIENT work create view.');
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/works/add',
+        title: 'add work',
+        heading: 'add work'
+      });
 
   } catch(err) {
 
@@ -25,7 +31,13 @@
 
   try {
 
-    res.status(200).send('CLIENT work read view.');
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/works/index',
+        title: 'works',
+        heading: 'works'
+      });
 
   } catch(err) {
 
@@ -44,8 +56,15 @@
   try {
 
     const { id } = req.params;
-    res.status(200).send(`CLIENT work detail view: ${id}.`);
 
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/works/detail',
+        title: `work ${id}`,
+        heading: 'work detail'
+      });
+      
   } catch(err) {
 
     next(err);
@@ -63,7 +82,15 @@
   try {
 
     const { id } = req.params;
-    res.status(200).send(`CLIENT work update view: ${id}.`);
+
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/works/update',
+        title: `update ${id}`,
+        heading: 'work update'
+      });
+    
 
   } catch(err) {
 
@@ -82,7 +109,15 @@
   try {
 
     const { id } = req.params;
-    res.status(200).send(`CLIENT work delete view: ${id}.`);
+
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/works/remove',
+        title: `delete ${id}`,
+        heading: 'work delete'
+      });
+    
 
   } catch(err) {
 
@@ -100,7 +135,15 @@
 
   try {
 
-    res.status(200).send('CLIENT drop work collection.');
+
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/works/drop',
+        title: 'drop works',
+        heading: 'work drop'
+      });
+    
 
   } catch(err) {
 

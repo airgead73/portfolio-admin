@@ -10,7 +10,6 @@ const cookieParser = require('cookie-parser');
  */
 const { isDev } = require('./config/env');
 const { authConfig } = require('./config');
-const { checkAuthClient, checkMethod } = require('./middleware');
 const clientRouter = require('./units.client/router');
 const apiRouter = require('./units.api/router');
 /**
