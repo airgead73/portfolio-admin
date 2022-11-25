@@ -1,5 +1,5 @@
-const workRouter = require('./work.routes');
+const profileRouter = require('./profile.routes');
 
 module.exports = {
-  workRouter
+  profileRouter
 }
