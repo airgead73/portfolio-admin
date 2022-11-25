@@ -9,8 +9,6 @@ if(req.method !== $method) {
 
 }
 
-console.log('request method:',req.method);
-
 next();
 
 

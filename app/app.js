@@ -35,7 +35,7 @@ app.use(function(req, res, next) {
 /**
  * routes
  */
-app.get('/', checkAuthClient, checkMethod('POST'), (req, res, next) => {
+app.get('/', checkAuthClient, checkMethod('GET'), (req, res, next) => {
   res.status(200).send('CLIENT home page');
 });
 /**
