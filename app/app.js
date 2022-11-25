@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser');
 const { isDev } = require('./config/env');
 const { authConfig } = require('./config');
 const { checkAuthClient, checkMethod } = require('./middleware');
+const clientRouter = require('./units.client/router');
 const apiRouter = require('./units.api/router');
 /**
  * app activation
@@ -36,6 +37,7 @@ app.use(function(req, res, next) {
 /**
  * routes
  */
+app.use('/', clientRouter);
 app.use('/api', apiRouter);
 /**
  * error handling

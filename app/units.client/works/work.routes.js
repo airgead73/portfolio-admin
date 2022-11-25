@@ -7,7 +7,7 @@ const { create, read, detail, update, remove, drop } = require('./work.controlle
 // routes
 workRouter.get('/', read);
 
-authorRouter.get('/add', create);
+workRouter.get('/add', create);
 
 workRouter.get('/drop', drop);
 
