@@ -1,26 +1,26 @@
 /**
- * @desc Create work 
- * @route POST - /works
+ * @desc Create photo 
+ * @route POST - /photos
  * @access Private
  * */
  exports.create = async(req,res,next) => {
 
   try {
-    res.status(200).send('API create works.');
+    res.status(200).send('API create photos.');
   } catch(err) {
     next(err);
   }
 
  }
 /**
- * @desc Read works
- * @route GET - /works
+ * @desc Read photos
+ * @route GET - /photos
  * @access Private
  * */
  exports.read = async(req,res,next) => {
 
   try {
-    res.status(200).send('API read works.');
+    res.status(200).send('API read photos.');
   } catch(err) {
     next(err);
   }
@@ -28,58 +28,58 @@
  }
 /**
  * @desc Read detail 
- * @route GET - /works/:id
+ * @route GET - /photos/:id
  * @access Private
  * */
  exports.detail = async(req,res,next) => {
 
   try {
     const { id } = req.params;
-    res.status(200).send(`API read work detail: ${id}.`);
+    res.status(200).send(`API read photo detail: ${id}.`);
   } catch(err) {
     next(err);
   }
 
  }
 /**
- * @desc Update work 
- * @route PATCH - /works/:id
+ * @desc Update photo 
+ * @route PATCH - /photos/:id
  * @access Private
  * */
  exports.update = async(req,res,next) => {
 
   try {
     const { id } = req.params;
-    res.status(200).send(`API update work: ${id}.`);
+    res.status(200).send(`API update photo: ${id}.`);
   } catch(err) {
     next(err);
   }
 
  }
 /**
- * @desc Delete work 
- * @route DELETE - /works/:id
+ * @desc Delete photo 
+ * @route DELETE - /photos/:id
  * @access Private
  * */
  exports.remove = async(req,res,next) => {
 
   try {
     const { id } = req.params;
-    res.status(200).send(`API delete work: ${id}.`);
+    res.status(200).send(`API delete photo: ${id}.`);
   } catch(err) {
     next(err);
   }
 
  }
 /**
- * @desc Drop work 
- * @route DELETE - /works
+ * @desc Drop photo 
+ * @route DELETE - /photos
  * @access Private
  * */
  exports.drop = async(req,res,next) => {
 
   try {
-    res.status(200).send('API drop work collection.');
+    res.status(200).send('API drop photo collection.');
   } catch(err) {
     next(err);
   }
