@@ -100,7 +100,7 @@
 
   try {
 
-    res.status(200).send(`CLIENT work detail view: ${id}.`);
+    res.status(200).send('CLIENT drop work collection.');
 
   } catch(err) {
 

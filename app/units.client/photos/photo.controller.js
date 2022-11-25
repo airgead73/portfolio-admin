@@ -100,7 +100,7 @@
 
   try {
 
-    res.status(200).send(`CLIENT photo detail view: ${id}.`);
+    res.status(200).send('CLIENT drop photo collection.');
 
   } catch(err) {
 
