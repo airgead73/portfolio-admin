@@ -10,7 +10,7 @@ const cookieParser = require('cookie-parser');
  */
 const { isDev } = require('./config/env');
 const { authConfig } = require('./config');
-const { checkAuthClient } = require('./middleware');
+const { checkAuthClient, checkMethod } = require('./middleware');
 /**
  * app activation
  */
@@ -35,13 +35,13 @@ app.use(function(req, res, next) {
 /**
  * routes
  */
-app.get('/', checkAuthClient, (req, res, next) => {
+app.get('/', checkAuthClient, checkMethod('POST'), (req, res, next) => {
   res.status(200).send('CLIENT home page');
 });
 /**
  * error handling
  */
-app.use(function(req, res, next) {
+app.use('*', function(req, res, next) {
   const error = new Error('path not found.');
   next(error);
 });
@@ -54,7 +54,7 @@ app.use(function(err, req, res, next) {
     status = err.status;
   }
 
-  res.send(`PATH: ${req.path}, ERROR: ${err.message}`);
+  res.status(status).send(`ERROR: ${err.message}`);
 
 });
 /**
