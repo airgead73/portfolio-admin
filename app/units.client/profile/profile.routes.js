@@ -2,19 +2,15 @@ const { Router } = require('express');
 const profileRouter = Router();
 
 // controllers
-const { create, read, detail, update, remove, drop } = require('./profile.controller');
+const { create, read, update, remove } = require('./profile.controller');
 
 // routes
 profileRouter.get('/', read);
 
 profileRouter.get('/add', create);
 
-profileRouter.get('/drop', drop);
+profileRouter.get('/update', update);
 
-profileRouter.get('/:id', detail);
-
-profileRouter.get('/:id/update', update);
-
-profileRouter.get('/:id/delete', remove);
+profileRouter.get('/delete', remove);
 
 module.exports = profileRouter;
