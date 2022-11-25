@@ -7,7 +7,13 @@
 
   try {
 
-    res.status(200).send('CLIENT dashboard');
+    return res.status(200)
+      .render('template', {
+        success: true,
+        pagePath: './pages/dashboard/index',
+        title: 'portfolio',
+        heading: 'portfolio'
+      });
 
   } catch(err) {
     next(err);

@@ -42,7 +42,8 @@ app.use('/api', apiRouter);
  * error handling
  */
 app.use('*', function(req, res, next) {
-  const error = new Error('path not found.');
+  const error = new Error('Page not Found.');
+  error.status = 401;
   next(error);
 });
 
@@ -54,7 +55,37 @@ app.use(function(err, req, res, next) {
     status = err.status;
   }
 
-  res.status(status).send(`ERROR: ${err.message}`);
+  const isApi = (req.path).includes('api');
+
+  if(isApi) {
+
+    return res.status(status)
+      .json({
+        success: false,
+        message: err.message
+      });
+
+  } else {
+
+    return res.status(status)
+      .render('template', {
+        success: false,
+        pagePath:'./pages/error',
+        title: `Error ${status}`,
+        heading: `Error ${status}`,
+        message: err.message
+      }); 
+
+    }
+
+  // return res.status(status)
+  //   .render('template', {
+  //     success: false,
+  //     pagePath:'./pages/error',
+  //     title: `Error ${status}`,
+  //     heading: `Error ${status}`,
+  //     message: err.message
+  //   })
 
 });
 /**
