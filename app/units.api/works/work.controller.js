@@ -32,11 +32,11 @@ const Work = require('./work');
 
   try {
 
-    const works = await Work.find();
+    const works = await Work.find().sort('-title');
 
     res.status(200)
     .json({
-      success,
+      success: true,
       message: 'API list of works.',
       count: works.length,
       data: works

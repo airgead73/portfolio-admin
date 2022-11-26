@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+const format = require('date-fns/format');
 
 const workSchema = mongoose.Schema({
   title: {
@@ -24,6 +25,17 @@ workSchema.pre("save", function(next) {
   });
 
   next();
+
+});
+
+workSchema.virtual('dates_formatted').get(function() {
+
+  if(!this.createdAt || !this.updatedAt) return;
+
+  return {
+    createdAt: format(this.createdAt, 'MMMM d, yyyy'),
+    updatedAt: format(this.updatedAt, 'MMMM d, yyyy')
+  }  
 
 });
 
