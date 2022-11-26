@@ -1,3 +1,4 @@
+const Work = require('./work');
 /**
  * @desc Create work 
  * @route POST - /works
@@ -6,7 +7,17 @@
  exports.create = async(req,res,next) => {
 
   try {
-    res.status(200).send('API create works.');
+
+    const work = new Work(req.body);
+    await work.save();
+
+    res.status(200)
+      .json({
+        success: true,
+        message: `API new work created: ${work.title}.`,
+        data: work
+      });
+
   } catch(err) {
     next(err);
   }
@@ -20,7 +31,17 @@
  exports.read = async(req,res,next) => {
 
   try {
-    res.status(200).send('API read works.');
+
+    const works = await Work.find();
+
+    res.status(200)
+    .json({
+      success,
+      message: 'API list of works.',
+      count: works.length,
+      data: works
+    });
+
   } catch(err) {
     next(err);
   }
@@ -79,7 +100,15 @@
  exports.drop = async(req,res,next) => {
 
   try {
-    res.status(200).send('API drop work collection.');
+    
+    await Work.collection.drop();
+
+    res.status(200)
+      .json({
+        success: true,
+        message: 'API drop work collection.'
+      });
+
   } catch(err) {
     next(err);
   }

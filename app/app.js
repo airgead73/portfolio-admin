@@ -12,6 +12,7 @@ const { isDev } = require('./config/env');
 const { authConfig } = require('./config');
 const clientRouter = require('./units.client/router');
 const apiRouter = require('./units.api/router');
+const { handleError } = require('./middleware');
 /**
  * app activation
  */
@@ -47,47 +48,7 @@ app.use('*', function(req, res, next) {
   next(error);
 });
 
-app.use(function(err, req, res, next) {
-  let status;
-  if(!err.status) {
-    status = 500;
-  } else {
-    status = err.status;
-  }
-
-  const isApi = (req.path).includes('api');
-
-  if(isApi) {
-
-    return res.status(status)
-      .json({
-        success: false,
-        message: err.message
-      });
-
-  } else {
-
-    return res.status(status)
-      .render('template', {
-        success: false,
-        pagePath:'./pages/error',
-        title: `Error ${status}`,
-        heading: `Error ${status}`,
-        message: err.message
-      }); 
-
-    }
-
-  // return res.status(status)
-  //   .render('template', {
-  //     success: false,
-  //     pagePath:'./pages/error',
-  //     title: `Error ${status}`,
-  //     heading: `Error ${status}`,
-  //     message: err.message
-  //   })
-
-});
+app.use(handleError);
 /**
  * export app
  */
