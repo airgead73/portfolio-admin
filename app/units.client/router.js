@@ -6,8 +6,9 @@ const { photoRouter } = require('./photos');
 const { profileRouter } = require('./profile');
 
 // middleware
-const { checkAuthClient } = require('../middleware');
+const { checkAuthClient, checkMethod } = require('../middleware');
 //clientRouter.use(checkAuthClient);
+clientRouter.use(checkMethod('GET'));
 
 // routes
 clientRouter.use('/', homeRouter);

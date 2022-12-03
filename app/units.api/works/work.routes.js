@@ -4,6 +4,9 @@ const workRouter = Router();
 // controller
 const { create, read, detail, update, remove, drop } = require('./work.controller');
 
+// middleware 
+const { checkMethod } = require('../../middleware');
+
 // routes
 workRouter.route('/')
   .get(read)
