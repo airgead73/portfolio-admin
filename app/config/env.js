@@ -8,7 +8,7 @@ const clientID = process.env.CLIENT_ID;
 const issuerURL = process.env.ISSUER_BASE_URL;
 
 /* DB */
-const mongoURI = process.env.MONGO_URI + 'db_v1';
+const mongoURI = process.env.MONGO_URI + process.env.MONGO_DBNAME;
 
 /* Check Variables */
 if(!authSecret) {
@@ -28,7 +28,7 @@ if(!issuerURL) {
 }
 
 if(!mongoURI) {
-  throw new Error('.env is missing the definition of MONGO_URI environment variable.');
+  throw new Error('.env is missing the definition of MONGO_URI or MONGO_DBNAME environment variable.');
 }
 
 /* export */
