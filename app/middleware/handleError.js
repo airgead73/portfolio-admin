@@ -9,20 +9,22 @@ const handleError = (err, req, res, next) => {
   const isApi = (req.path).includes('api');
 
   if(isApi) {
-    console.log('This is an api route.');
+    return res.status(status)
+      .json({
+        success:false,
+        message: err.message
+      });
   } else {
-    console.log('This is a client route.');
+    return res.status(status)
+      .render('template', {
+        success: false,
+        pagePath:'./pages/error',
+        title: `Error ${status}`,
+        heading: `Error ${status}`,
+        message: err.message
+      });     
   }
-
-  return res.status(status)
-  .render('template', {
-    success: false,
-    pagePath:'./pages/error',
-    title: `Error ${status}`,
-    heading: `Error ${status}`,
-    message: err.message
-  }); 
-
+  
 }
 
 module.exports = handleError;

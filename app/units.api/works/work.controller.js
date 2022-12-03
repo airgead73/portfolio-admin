@@ -56,7 +56,8 @@ const Work = require('./work');
 
   try {
     const { id } = req.params;
-    res.status(200).send(`API read work detail: ${id}.`);
+    const work = await Work.find({ _id: id });
+    res.status(200).json({ success: true, message: 'work found.', data: work });
   } catch(err) {
     next(err);
   }
