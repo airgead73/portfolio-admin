@@ -32,13 +32,19 @@ const Work = require('./work');
 
   try {
 
-    const works = await Work.find().sort('-title');
+    const { success, count, data: works } = res.results;
+
+    if(!success) {
+      const error = new Error('Something went wrong.');
+      error.status(500);
+      return next(err);
+    }
 
     res.status(200)
     .json({
-      success: true,
+      success,
       message: 'List of works.',
-      count: works.length,
+      count,
       data: works
     });
 
