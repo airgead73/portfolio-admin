@@ -14,7 +14,7 @@ const Work = require('./work');
     res.status(200)
       .json({
         success: true,
-        message: `API new work created: ${work.title}.`,
+        message: `${work.title} successfully created.`,
         data: work
       });
 
@@ -37,7 +37,7 @@ const Work = require('./work');
     res.status(200)
     .json({
       success: true,
-      message: 'API list of works.',
+      message: 'List of works.',
       count: works.length,
       data: works
     });
@@ -55,8 +55,7 @@ const Work = require('./work');
  exports.detail = async(req,res,next) => {
 
   try {
-    const { id } = req.params;
-    const work = await Work.find({ _id: id });
+    const work = res.data;
     res.status(200).json({ success: true, message: 'work found.', data: work });
   } catch(err) {
     next(err);
@@ -71,8 +70,8 @@ const Work = require('./work');
  exports.update = async(req,res,next) => {
 
   try {
-    const { id } = req.params;
-    res.status(200).send(`API update work: ${id}.`);
+    const updatedWork = await Work.findOneAndUpdate(res.id, req.body, { new: true, runValidators: true });
+    res.status(200).json({ success: true, message: `${updatedWork.title} successfully updated.`, data: updatedWork });
   } catch(err) {
     next(err);
   }
@@ -86,8 +85,9 @@ const Work = require('./work');
  exports.remove = async(req,res,next) => {
 
   try {
-    const { id } = req.params;
-    res.status(200).send(`API delete work: ${id}.`);
+    const work = res.data;
+    work.remove();
+    res.status(200).json({ success: true, message: `${work.title} successfully deleted.`});
   } catch(err) {
     next(err);
   }
@@ -107,7 +107,7 @@ const Work = require('./work');
     res.status(200)
       .json({
         success: true,
-        message: 'API drop work collection.'
+        message: 'Work collection successfully dropped.'
       });
 
   } catch(err) {

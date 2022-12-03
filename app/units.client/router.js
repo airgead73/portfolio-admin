@@ -8,7 +8,7 @@ const { profileRouter } = require('./profile');
 // middleware
 const { checkAuthClient, checkMethod } = require('../middleware');
 //clientRouter.use(checkAuthClient);
-clientRouter.use(checkMethod('GET'));
+//clientRouter.use(checkMethod('GET'));
 
 // routes
 clientRouter.use('/', homeRouter);
