@@ -32,7 +32,7 @@ const Work = require('./work');
 
   try {
 
-    const { success, count, data: works } = res.results;
+    const { success, count, pagination, data: works } = res.results;
 
     if(!success) {
       const error = new Error('Something went wrong.');
@@ -45,6 +45,7 @@ const Work = require('./work');
       success,
       message: 'List of works.',
       count,
+      pagination,
       data: works
     });
 

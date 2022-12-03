@@ -8,6 +8,9 @@ const workSchema = mongoose.Schema({
     required: [true, 'Provide a title.'],
     maxlength: 50,
     trim: true
+  },
+  slug: {
+    type: String
   }
 }, {
   timestamps: true
