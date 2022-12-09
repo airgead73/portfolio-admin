@@ -11,6 +11,11 @@ const workSchema = mongoose.Schema({
   },
   slug: {
     type: String
+  },
+  mode: {
+    type: String,
+    maxlength: 50,
+    trim: true
   }
 }, {
   timestamps: true
@@ -19,13 +24,42 @@ const workSchema = mongoose.Schema({
 workSchema.set('toObject', { virtuals: true });
 workSchema.set('toJSON', { virtuals: true });
 
+// create slug
 workSchema.pre("save", function(next) {
 
-  this.slug = slugify(this.title, {
+  // strip out special characters
+
+  const rawSlug = slugify(this.title, {
     replacement: '-',
+    remove: /[*+~.()'"!:@,]/g,
     lower: true,
     trim: true
   });
+
+  // strip out prepositions
+
+  const prepositionStrings = {
+    "of": true,
+    "the": true,
+    "in": true,
+    "on": true,
+    "at": true,
+    "to": true,
+    "a": true,    
+  };  
+
+  const rawWords = rawSlug.split("-");
+  const importantWords = new Array();
+  rawWords.forEach(word => {
+    if(typeof prepositionStrings[word] == "undefined") {
+      importantWords.push(word);
+    }  
+  });
+
+  // save final slug
+
+  this.slug = importantWords.join("-");
+
 
   next();
 

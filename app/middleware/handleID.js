@@ -19,9 +19,9 @@ const handleID = ($model) => async (req, res, next) => {
 
   // check if item exists
 
-  const data = await $model.findById(id);
+  const item = await $model.findById(id);
 
-  if(!data) {
+  if(!item) {
     return res
       .status(401)
       .json({
@@ -30,8 +30,10 @@ const handleID = ($model) => async (req, res, next) => {
       });
   }
 
-  res.data = data;
-  res.id = id;
+  res.data = {
+    item,
+    id
+  };
 
   next();
 

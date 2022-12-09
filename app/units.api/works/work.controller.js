@@ -62,7 +62,7 @@ const Work = require('./work');
  exports.detail = async(req,res,next) => {
 
   try {
-    const work = res.data;
+    const { item: work } = res.data;
     res.status(200).json({ success: true, message: 'work found.', data: work });
   } catch(err) {
     next(err);
@@ -76,8 +76,10 @@ const Work = require('./work');
  * */
  exports.update = async(req,res,next) => {
 
+  console.log(res.data.id);
+
   try {
-    const updatedWork = await Work.findOneAndUpdate(res.id, req.body, { new: true, runValidators: true });
+    const updatedWork = await Work.findByIdAndUpdate(res.data.id, req.body, { new: true, runValidators: true });
     res.status(200).json({ success: true, message: `${updatedWork.title} successfully updated.`, data: updatedWork });
   } catch(err) {
     next(err);
