@@ -76,8 +76,6 @@ const Work = require('./work');
  * */
  exports.update = async(req,res,next) => {
 
-  console.log(res.data.id);
-
   try {
     const updatedWork = await Work.findByIdAndUpdate(res.data.id, req.body, { new: true, runValidators: true });
     res.status(200).json({ success: true, message: `${updatedWork.title} successfully updated.`, data: updatedWork });

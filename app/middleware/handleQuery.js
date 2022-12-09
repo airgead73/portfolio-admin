@@ -32,7 +32,7 @@ const handleQuery = ($model, $populate) => async (req, res, next) => {
 
   // pagination
   const page = parseInt(req.query.page, 10) || 1;
-  const limit = parseInt(req.query.limit, 10) || 25;
+  const limit = parseInt(req.query.limit, 10) || 50;
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
   const total = await $model.countDocuments();
