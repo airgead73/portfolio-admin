@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const slugify = require('slugify');
+const { createSlug } = require('../../utils');
 const format = require('date-fns/format');
 
 const workSchema = mongoose.Schema({
@@ -27,39 +27,7 @@ workSchema.set('toJSON', { virtuals: true });
 // create slug
 workSchema.pre("save", function(next) {
 
-  // strip out special characters
-
-  const rawSlug = slugify(this.title, {
-    replacement: '-',
-    remove: /[*+~.()'"!:@,]/g,
-    lower: true,
-    trim: true
-  });
-
-  // strip out prepositions
-
-  const prepositionStrings = {
-    "of": true,
-    "the": true,
-    "in": true,
-    "on": true,
-    "at": true,
-    "to": true,
-    "a": true,    
-  };  
-
-  const rawWords = rawSlug.split("-");
-  const importantWords = new Array();
-  rawWords.forEach(word => {
-    if(typeof prepositionStrings[word] == "undefined") {
-      importantWords.push(word);
-    }  
-  });
-
-  // save final slug
-
-  this.slug = importantWords.join("-");
-
+  this.slug = createSlug(this.title);
 
   next();
 
