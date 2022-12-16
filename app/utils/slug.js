@@ -31,7 +31,7 @@ const createSlug = ($rawString) => {
     }  
   });
 
-  // save final slug
+  // return final slug
 
   const finalSlug = importantWords.join("-");  
 

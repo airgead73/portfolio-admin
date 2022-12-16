@@ -1,9 +1,5 @@
 const handleQuery = ($model, $populate) => async (req, res, next) => {
 
-  /**
-   * @todo add pagination
-   */
-
   let query;
 
   const reqQuery = {...req.query}; 

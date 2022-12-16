@@ -1,3 +1,4 @@
+const Photo = require('./photo');
 /**
  * @desc Create photo 
  * @route POST - /photos
@@ -6,7 +7,17 @@
  exports.create = async(req,res,next) => {
 
   try {
-    res.status(200).send('API create photos.');
+
+    const photo = new Photo(req.body);
+    await photo.save();
+
+    res.status(200)
+      .json({
+        success: true,
+        message: `${photo.title} successfully created.`,
+        data: photo
+      });
+
   } catch(err) {
     next(err);
   }
@@ -20,7 +31,15 @@
  exports.read = async(req,res,next) => {
 
   try {
-    res.status(200).send('API read photos.');
+    const { success, count, pagination, data: photos } = res.results;
+    res.status(200)
+    .json({
+      success,
+      message: 'List of photos.',
+      count,
+      pagination,
+      data: photos
+    });
   } catch(err) {
     next(err);
   }
