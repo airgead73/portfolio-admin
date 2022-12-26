@@ -6,14 +6,14 @@ const Work = require('./work');
 const { create, read, detail, update, remove, drop } = require('./work.controller');
 
 // middleware 
-const { checkMethod, handleID, handleQuery } = require('../../middleware');
+const { checkMethod, handleID, handleQuery, validate, validationRules } = require('../../middleware');
 
 workRouter.use('/:id', handleID(Work));
 
 // routes
 workRouter.route('/')
   .get(handleQuery(Work), read)
-  .post(create)
+  .post(validationRules('createWork'), validate, create)
   .delete(drop);
 
 workRouter.route('/:id')

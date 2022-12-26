@@ -8,6 +8,19 @@ const Work = require('./work');
 
   try {
 
+    const { success, errors } = res.val_results;
+
+    if(!success) {
+      const { errors: responseErrors } = errors;
+      return res
+        .status(400)
+        .json({
+          success: false,
+          message: 'Error: something went wrong.',
+          errors: responseErrors
+        });
+    }
+
     const work = new Work(req.body);
     await work.save();
 

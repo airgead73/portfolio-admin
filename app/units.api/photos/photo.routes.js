@@ -6,13 +6,14 @@ const Photo = require('./photo');
 const { create, read, detail, update, remove, drop } = require('./photo.controller');
 
 // middleware
-const { handleQuery } = require('../../middleware');
+const { handleID, handleQuery, validate, validationRules } = require('../../middleware');
+photoRouter.use('/:id', handleID(Photo));
 const populate = { path: 'work', select: 'title'};
 
 // routes
 photoRouter.route('/')
   .get(handleQuery(Photo, populate), read)
-  .post(create)
+  .post(validationRules('createPhoto'), validate, create)
   .delete(drop);
 
 photoRouter.route('/:id')
